@@ -33,7 +33,7 @@ buildConfigField 'String','VERSION',"\"${rootProject.ext.sdkversion}\""
 
 3.在代码里获得
 ```java
-try {
+   try {
         ApplicationInfo appInfo = getPackageManager()
                 .getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA);
         sdkversion = appInfo.metaData.getString("sdkversion");
