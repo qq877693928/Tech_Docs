@@ -1,4 +1,5 @@
 # 技术随笔
+
 ## 1.Config.gradle文件中的数字参数在代码里获得
 背景：config.gradle文件标注了sdk或者app的version，需要在代码里获取
 ### 方案一：通过buildConfigField构建BuildConfig
