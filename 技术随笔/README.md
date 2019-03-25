@@ -1,7 +1,7 @@
 # 技术随笔
 ## 目录
 * [Config.gradle文件中的数值参数在代码里获得](#1configgradle文件中的数值参数在代码里获得)
-* [Config.gradle文件中的数值参数在代码里获得](#2List在遍历时出现ConcurrentModificationException)
+* [List在遍历时出现ConcurrentModificationException](#2List在遍历时出现ConcurrentModificationException)
 
 ## 1.Config.gradle文件中的数值参数在代码里获得
 背景：config.gradle文件标注了sdk或者app的version，需要在代码里获取
@@ -48,4 +48,16 @@ buildConfigField 'String','VERSION',"\"${rootProject.ext.sdkversion}\""
 
 ## 2.List在遍历时出现ConcurrentModificationException
 ### 方案一：通过替换成特殊的ArrayList
+```java
+List<String> collects = new CopyOnWriteArrayList<String>();
+```
+
 ### 方案二：修改List遍历方式
+```java
+Iterator iterator  = collects.iterator();  
+while(iterator.hasNext()){
+    System.out.println(iterator.next());
+    collects.add("333");
+    System.out.println("add over");
+}
+```
