@@ -2,7 +2,7 @@
 ## 目录
 * [Config.gradle文件中的数值参数在代码里获得](#1configgradle文件中的数值参数在代码里获得)
 * [List在遍历时出现ConcurrentModificationException](#2List在遍历时出现ConcurrentModificationException)
-* [build.gradle文件里自定义属性](#3build.gradle文件里自定义属性)
+* [build.gradle文件里自定义属性](#3buildgradle文件里自定义属性)
 
 ## 1.Config.gradle文件中的数值参数在代码里获得
 背景：config.gradle文件标注了sdk或者app的version，需要在代码里获取
@@ -64,8 +64,8 @@ while(iterator.hasNext()){
 ```
 
 ## 3.build.gradle文件里自定义属性
-在App工程中统一配置版本参数和dependencies的参数，需要一个统一config.gradle管理和配置
--- 新建一个config.gradle文件
+在App工程中统一配置版本参数和dependencies的参数，需要一个统一config.gradle管理和配置<br>
+1.新建一个config.gradle文件
 ```java
 ext {
     sdkversion = "1.0.0"
@@ -80,11 +80,11 @@ ext {
     ]
 }
 ```
--- 在Project根目录的build.gradle文件添加这文件
+2.在Project根目录的build.gradle文件添加这文件
 ```java
 apply from: "config.gradle"
 ```
--- 在Module的gradle文件或manifest文件中使用
+3.在Module的gradle文件或manifest文件中使用
 ```java
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
