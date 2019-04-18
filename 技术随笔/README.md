@@ -3,6 +3,7 @@
 * [Config.gradle文件中的数值参数在代码里获得](#1configgradle文件中的数值参数在代码里获得)
 * [List在遍历时出现ConcurrentModificationException](#2List在遍历时出现ConcurrentModificationException)
 * [build.gradle文件里自定义属性](#3buildgradle文件里自定义属性)
+* [图片Bitmap的缩放](#4图片Bitmap的缩放)
 
 ## 1.Config.gradle文件中的数值参数在代码里获得
 背景：config.gradle文件标注了sdk或者app的version，需要在代码里获取
@@ -101,3 +102,24 @@ android {
     }
 }
 ```
+
+## 4.图片Bitmap的缩放
+使用官方的ThumbnailUtils.extractThumbnail功能类有可能出现图片显示不全的问题，所以还是使用Matrix
+```java
+    int bitWidth = bitmap.getWidth();
+    int bitHeight = bitmap.getHeight();
+
+    float scaleWidth = ((float) mNewWidth) / bitWidth;
+    float scaleHeight = ((float) mNewHeight) / bitHeight;
+
+    Matrix matrix = new Matrix();
+    matrix.postScale(scaleWidth, scaleHeight);
+
+    Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitWidth, bitHeight, matrix,
+            true);
+    if (null != newBitmap) {
+        bitmap.recycle();
+        mBitmap = newBitmap;
+    }
+```
+
