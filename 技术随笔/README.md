@@ -123,3 +123,27 @@ android {
     }
 ```
 
+## 5.proto编译时在高版本不支持javanano，pom中的依赖】
+```java
+<dependencies>
+    <dependency>
+      <groupId>com.android.support</groupId>
+      <artifactId>appcompat-v7</artifactId>
+      <version>28.0.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf.nano</groupId>
+      <artifactId>protobuf-javanano</artifactId>
+      <version>3.1.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protoc</artifactId>
+      <version>3.1.0</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+```
+
