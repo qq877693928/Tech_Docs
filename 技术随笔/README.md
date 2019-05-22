@@ -4,7 +4,7 @@
 * [List在遍历时出现ConcurrentModificationException](#2List在遍历时出现ConcurrentModificationException)
 * [build.gradle文件里自定义属性](#3buildgradle文件里自定义属性)
 * [图片Bitmap的缩放](#4图片Bitmap的缩放)
-* [proto编译支持javanano](#5图片Bitmap的缩放)
+* [proto编译支持javanano](#5proto编译时在高版本支持javananopom中的依赖)
 
 ## 1.Config.gradle文件中的数值参数在代码里获得
 背景：config.gradle文件标注了sdk或者app的version，需要在代码里获取
